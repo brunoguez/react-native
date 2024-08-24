@@ -1,12 +1,13 @@
 import { StyleSheet, Text, SafeAreaView, ScrollView, TextInput } from 'react-native';
 import Ex1 from './components/Ex1';
+import Ex2 from './components/Ex2';
 
 export default function App() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
                 <Ex1/>
-                <Text style={styles.text}><b>Exercício 2:&nbsp;</b>Teste</Text>
+                <Ex2/>
                 <Text style={styles.text}><b>Exercício 3:&nbsp;</b>Teste</Text>
                 <Text style={styles.text}><b>Exercício 4:&nbsp;</b>Teste</Text>
                 <Text style={styles.text}><b>Exercício 5:&nbsp;</b>Teste</Text>

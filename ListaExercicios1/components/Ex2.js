@@ -1,18 +1,30 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Text, SafeAreaView, TextInput, StyleSheet, Pressable } from 'react-native'
 
-export default function Ex1() {
+export default function Ex2() {
     const [peso, setPeso] = React.useState('');
     const [altura, setAltura] = React.useState('');
     const [result, setResult] = React.useState('');
     const [viewResultado, onChangeResultado] = React.useState(false);
+
+    const [generos, setGeneros] = useState([]);
+
+    const urlBase = "https://api.themoviedb.org",
+        bearerToken = "eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYTZlYWFjNGFmZmU1N2E2ZDNiZTdkNjAyNGE4OWQxOCIsIm5iZiI6MTcyNDUwMjUyNi4zNDY0ODYsInN1YiI6IjY2YzkzYmVmNmMzOWRmOThhMGE2ZmMyNiIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.OrVpNmjMw6-BikfmqnCAR10nN-ZP6RsQYeJ2n8EhTiE";
+
+    useEffect(() => {
+        fetch(`${urlBase}/3/genre/movie/list?language=pt-br`, {
+            headers: { 'Authorization': 'Bearer ' + bearerToken },
+        }).then(a => a.json())
+        .then(a => console.log(a))
+    }, []);
     return (
         <SafeAreaView>
-            <Text style={styles.text} > <b>Exercício 1:&nbsp;</b>Calculadora de IMC Interativa</Text>
+            <Text style={styles.text} > <b>Exercício 2:&nbsp;</b>Gerador de recomendação de Filmes</Text>
             <TextInput
                 style={styles.input}
                 value={peso}
-                onChangeText={(text) => setPeso(text.replace(",","."))}
+                onChangeText={(text) => setPeso(text.replace(",", "."))}
                 placeholder="Insira seu peso"
                 inputMode='decimal'
                 keyboardType='numeric'
@@ -20,7 +32,7 @@ export default function Ex1() {
             <TextInput
                 style={styles.input}
                 value={altura}
-                onChangeText={(text) => setAltura(text.replace(",","."))}
+                onChangeText={(text) => setAltura(text.replace(",", "."))}
                 placeholder="Insira sua altura"
                 inputMode='decimal'
                 keyboardType='numeric'
