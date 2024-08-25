@@ -1,18 +1,19 @@
 import React from 'react'
 import { Text, SafeAreaView, TextInput, StyleSheet, Pressable } from 'react-native'
+import Botao from './Botao';
 
-export default function Ex1() {
+export default function Ex1({ viewStyle }) {
     const [peso, setPeso] = React.useState('');
     const [altura, setAltura] = React.useState('');
     const [result, setResult] = React.useState('');
     const [viewResultado, onChangeResultado] = React.useState(false);
     return (
-        <SafeAreaView>
+        <SafeAreaView style={viewStyle}>
             <Text style={styles.text} > <b>Exercício 1:&nbsp;</b>Calculadora de IMC Interativa</Text>
             <TextInput
                 style={styles.input}
                 value={peso}
-                onChangeText={(text) => setPeso(text.replace(",","."))}
+                onChangeText={(text) => setPeso(text.replace(",", "."))}
                 placeholder="Insira seu peso"
                 inputMode='decimal'
                 keyboardType='numeric'
@@ -20,7 +21,7 @@ export default function Ex1() {
             <TextInput
                 style={styles.input}
                 value={altura}
-                onChangeText={(text) => setAltura(text.replace(",","."))}
+                onChangeText={(text) => setAltura(text.replace(",", "."))}
                 placeholder="Insira sua altura"
                 inputMode='decimal'
                 keyboardType='numeric'
@@ -61,6 +62,7 @@ export default function Ex1() {
             }}>
                 <Text style={styles.textButton}>Calcular!</Text>
             </Pressable>
+            <Botao text="aaa" onPress={() => console.log('certooo')} />
             {viewResultado && <Text style={styles.text}>{result}</Text>}
         </SafeAreaView >
     )

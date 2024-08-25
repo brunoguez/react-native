@@ -6,7 +6,7 @@ export default function App() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
-                <Ex1/>
+                <Ex1 viewStyle={{}}/>
                 <Ex2/>
                 <Text style={styles.text}><b>Exercício 3:&nbsp;</b>Teste</Text>
                 <Text style={styles.text}><b>Exercício 4:&nbsp;</b>Teste</Text>
@@ -25,11 +25,12 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         alignItems: 'center',
         justifyContent: 'center',
+        
     },
     scrollView: {
         backgroundColor: 'pink',
         marginHorizontal: 20,
-        width: 400,
+        width: '100%',
         padding: 10,
     },
     text: {
