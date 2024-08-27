@@ -1,16 +1,21 @@
 import { StyleSheet, Text, SafeAreaView, ScrollView, TextInput } from 'react-native';
-import Ex1 from './components/Ex1';
 import Ex2 from './components/Ex2';
+import Ex1 from './components/Ex1';
+import Ex3 from './components/Ex3';
+import Ex4 from './components/Ex4';
+import Ex5 from './components/Ex5';
+import Ex6 from './components/Ex6';
 
 export default function App() {
     return (
         <SafeAreaView style={styles.container}>
             <ScrollView style={styles.scrollView}>
-                <Ex1 viewStyle={{}}/>
-                <Ex2/>
-                <Text style={styles.text}><b>Exercício 3:&nbsp;</b>Teste</Text>
-                <Text style={styles.text}><b>Exercício 4:&nbsp;</b>Teste</Text>
-                <Text style={styles.text}><b>Exercício 5:&nbsp;</b>Teste</Text>
+                <Ex1 viewStyle={{display: 'none'}}/>
+                <Ex2 viewStyle={{display: 'none'}}/>
+                <Ex3 viewStyle={{display: 'none'}}/>
+                <Ex4 viewStyle={{display: 'none'}}/>
+                <Ex5 viewStyle={{display: 'auto'}}/>
+                <Ex6 viewStyle={{display: 'auto'}}/>
                 <Text style={styles.text}><b>Exercício 6:&nbsp;</b>Teste</Text>
                 <Text style={styles.text}><b>Exercício 7:&nbsp;</b>Teste</Text>
                 <Text style={styles.text}><b>Exercício 8:&nbsp;</b>Teste</Text>
@@ -46,4 +51,3 @@ const styles = StyleSheet.create({
         padding: 10,
     },
 });
-

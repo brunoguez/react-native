@@ -4,7 +4,11 @@ import React from 'react'
 export default function Botao({ text, onPress }) {
     return (
         <View>
-            <Pressable style={styles.button} onPress={onPress}>
+            <Pressable style={({ pressed }) => [
+                styles.button,
+                pressed && { backgroundColor: '#333' }
+            ]}
+                onPress={onPress}>
                 <Text style={styles.textButton}>{text}</Text>
             </Pressable>
         </View>
