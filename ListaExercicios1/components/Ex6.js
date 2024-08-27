@@ -1,6 +1,8 @@
-import { StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { StyleSheet, SafeAreaView } from 'react-native'
+import { RadioButton, Divider, Text, Checkbox } from 'react-native-paper';
+import * as React from 'react'
 import { exercises } from '../db';
+import estilos from '../templates';
 
 // const axios = require('axios').default;
 // const { v4: uuidv4 } = require('uuid');
@@ -80,20 +82,59 @@ import { exercises } from '../db';
 //     }
 //     console.log(exercise.id)
 // }
+const ex = exercises.map(e => e.traducao);
+const mapear = (valor) => new Set(ex.filter(e => e[valor]).map(e => e[valor]));
+const dict = {
+    force: mapear('force'),
+    category: mapear('category'),
+    equipment: mapear('equipment'),
+    level: mapear('level'),
+    mechanic: mapear('mechanic'),
+}
 
 const Ex6 = ({ viewStyle }) => {
-    useState(async () => {
-        const ex = exercises.map(e => e.traducao);
+    const [level, setLevel] = React.useState('iniciante');
+    const [categorias, setCategorias] = React.useState();
 
-        console.log({ forces: new Set(ex.map(e => e.equipment)), ex })
+    const handleCategoria = (...a) => {
+        setCategorias(new Map())
+    }
+
+    React.useState(() => {
+        console.log(dict)
     }, []);
+
     return (
-        <View style={viewStyle}>
-            <Text>Ex6</Text>
-        </View>
+        <SafeAreaView style={viewStyle}>
+            <Text style={styles.text}><b>Exercício 6: </b>Aplicativo de Rastreamento de Exercício</Text>
+            <Divider />
+            <Text style={styles.title} variant="headlineSmall">Level</Text>
+            <RadioButton.Group onValueChange={value => setLevel(value)} value={level}>
+                <RadioButton.Item label="Iniciante" value="iniciante" />
+                <RadioButton.Item label="Intermediário" value="intermediario" />
+                <RadioButton.Item label="Especialista" value="especialista" />
+            </RadioButton.Group>
+            {Array.from(dict.category).map(cat => (
+                <Checkbox
+                    status={categorias.includes(cat) ? "checked" : "unchecked"}
+                    onPress={(a) => handleCategoria(a,cat)}
+                    key={cat}
+                />
+            ))}
+            <Divider />
+        </SafeAreaView>
     )
 }
 
-export default Ex6
+const styles = StyleSheet.create({
+    ...estilos,
+    container: {
+        flex: 1,
+        alignItems: 'center',
+    },
+    title: {
+        textAlign: 'center'
+    }
+})
 
-const styles = StyleSheet.create({})
+export default Ex6;
