@@ -9,14 +9,6 @@ export default function Ex1() {
     return (
         <SafeAreaView style={styles.container}>
             <Text style={styles.text} > Exercício 1: Calculadora de IMC Interativa</Text>
-            <Image
-                    source={{ uri: 'https://image.tmdb.org/t/p/w200/kWoWvS7qQpgRUe6op45a1FbkO8g.jpg' }}
-                    style={{
-                        width: '100%',
-                        height: 300,
-                        borderRadius: 10,
-                    }}
-                />
             <TextInput
                 style={styles.input}
                 value={peso}

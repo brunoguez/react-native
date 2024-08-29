@@ -29,7 +29,7 @@ const Ex8 = () => {
     }
 
     return (
-        <View style={[styles.container, styles.pl, styles.pr, { width: '90%' }]}>
+        <View style={[styles.container, styles.pl, styles.pr, { width: '90%', flex: 1}]}>
             <TextInput
                 label='Valor do Produto'
                 inputMode='decimal'
@@ -63,6 +63,9 @@ export default Ex8
 
 const styles = StyleSheet.create({
     ...estilos,
+    container:{
+        justifyContent: 'center',
+    },
     h100: {
         height: '100%'
     },

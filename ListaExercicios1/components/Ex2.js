@@ -6,7 +6,7 @@ import MovieCarousel from './MovieCarousel';
 
 const categories = generos;
 export default function Ex2() {
-    const [selectedButtons, setSelectedButtons] = useState([]); 
+    const [selectedButtons, setSelectedButtons] = useState([]);
     const [viewGeneros, setViewGeneros] = useState(true);
     const [selectedGenero, setSelectedGenero] = useState([]);
     const getMapSelectedButtonsId = () => selectedButtons.map(a => a.id);
@@ -41,28 +41,30 @@ export default function Ex2() {
     // }, []);
 
     return (
-        <View style={[{width: '100%'}]}>
-            {viewGeneros && <ScrollView style={{height: 500, width: '100%'}}>
-                {categories.map(category => (
-                    <TouchableOpacity
-                        key={category.id}
-                        style={[
-                            styles.button,
-                            getMapSelectedButtonsId().includes(category.id) && styles.buttonSelected
-                        ]}
-                        onPress={() => handlePress(category)}
-                    >
-                        <Text style={[
-                            styles.buttonText,
-                            getMapSelectedButtonsId().includes(category.id) && styles.buttonTextSelected
-                        ]}>
-                            {category.name}
-                        </Text>
-                    </TouchableOpacity>
-                ))}
+        <View style={[{ width: '100%', flex: 1, alignItems: 'center' }]}>
+            {viewGeneros && <ScrollView style={{ height: '100%' }}>
+                <View style={styles.colunas}>
+                    {categories.map(category => (
+                        <TouchableOpacity
+                            key={category.id}
+                            style={[
+                                styles.button,
+                                getMapSelectedButtonsId().includes(category.id) && styles.buttonSelected
+                            ]}
+                            onPress={() => handlePress(category)}
+                        >
+                            <Text style={[
+                                styles.buttonText,
+                                getMapSelectedButtonsId().includes(category.id) && styles.buttonTextSelected
+                            ]}>
+                                {category.name}
+                            </Text>
+                        </TouchableOpacity>
+                    ))}
+                </View>
             </ScrollView>}
             {viewGeneros && <Botao text={"Indicar Filmes!"} onPress={handleProcurarFilmes} />}
-            {!viewGeneros && <ScrollView style={[{height: 500}]}>
+            {!viewGeneros && <ScrollView style={[{ height: 500 }]}>
                 {selectedGenero.map((category) => (
                     <View key={category.id}>
                         <Text style={styles.genreTitle}>{category.name}</Text>
@@ -71,21 +73,29 @@ export default function Ex2() {
                 ))}
             </ScrollView>}
             {!viewGeneros && <Botao text={"Voltar!"} onPress={() => setViewGeneros(true)} />}
-            
+
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
+        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         padding: 10,
         width: '100%'
     },
+    colunas: {
+        alignItems: 'center',
+        flexDirection: 'row',
+        flexWrap: 'wrap',
+        justifyContent: 'space-between',
+        padding: 20,
+    },
     button: {
-        minWidth: '32%',
+        width: '32%',
         padding: 10,
         marginVertical: 5,
         borderWidth: 1,

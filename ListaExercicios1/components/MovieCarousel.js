@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 import { View, Text, Image, StyleSheet, Dimensions } from 'react-native';
 import Carousel from 'react-native-snap-carousel';
 
@@ -8,7 +8,6 @@ const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w200";
 
 export default function MovieCarousel({ movies }) {
     const renderItem = ({ item }) => {
-        //console.log(`${IMAGE_BASE_URL}${item.poster_path}`)
         return (
             <View style={styles.card}>
                 <Image
@@ -28,6 +27,8 @@ export default function MovieCarousel({ movies }) {
             itemWidth={width * 0.7}
             initialNumToRender={7}
             layout="default"
+            loop={true}
+            loopClonesPerSide={movies.length}
         />
     );
 }

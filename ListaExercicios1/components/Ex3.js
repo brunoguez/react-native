@@ -43,7 +43,7 @@ export default function Ex3() {
     }
 
     return (
-        <View>
+        <View style={{padding: 15}}>
             <Text style={styles.text} > Exercício 3: Aplicativo de Controle de Despesas</Text>
             <TextInput
                 style={styles.input}
@@ -61,7 +61,6 @@ export default function Ex3() {
             />
             <Botao text={"Calcular suas economias!"} onPress={handleCalculo} />
             {viewResultado && <Text style={styles.text}>{result}</Text>}
-            <Botao text={"Voltar"} />
         </View>
     )
 }

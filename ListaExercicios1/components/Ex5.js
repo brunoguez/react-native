@@ -49,8 +49,8 @@ export default function Ex5() {
     }, [])
 
     return (
-        <View >
-            <Text style={styles.text}><b>Exercício 5: </b>Jogo de Adivinhação</Text>
+        <View style={{padding: 15}}>
+            <Text style={styles.text}>Exercício 5: Jogo de Adivinhação</Text>
             <Text style={[styles.text, styles.textResult]}>{exibir ? valor : "????"}</Text>
             <TextInput
                 style={styles.mb}
@@ -74,7 +74,7 @@ export default function Ex5() {
 const styles = StyleSheet.create({
     ...estilos,
     mb: {
-        marginBottom: '1em'
+        marginBottom: 15
     },
     textResult: {
         fontSize: 50,

@@ -134,57 +134,59 @@ const Ex6 = () => {
     }
 
     return (
-
-        <SafeAreaView >
-            <Text style={styles.text}><b>Exercício 6: </b>Aplicativo de Rastreamento de Exercício</Text>
-            {!show && <View>
-                <Divider />
-                <Text style={styles.title} variant="headlineSmall">Level</Text>
-                <RadioButton.Group onValueChange={value => setLevel(value)} value={level}>
-                    <RadioButton.Item label="Iniciante" value="iniciante" />
-                    <RadioButton.Item label="Intermediário" value="intermediário" />
-                    <RadioButton.Item label="Especialista" value="especialista" />
-                </RadioButton.Group>
-                <Divider />
-                <Text style={styles.title} variant="headlineSmall">Categoria</Text>
-
-                {Array.from(dict.category).map(cat => (
-                    <Checkbox.Item
-                        status={categorias[cat] ? "checked" : "unchecked"}
-                        onPress={() => handleCategoria(cat)}
-                        key={cat}
-                        label={cat.charAt(0).toUpperCase() + cat.slice(1)}
-                    />
-                ))}
-                <Divider />
-                <Text style={styles.title} variant="headlineSmall">Equipamento</Text>
-                {Array.from(dict.equipment).map(eq => (
-                    <Checkbox.Item
-                        status={equipamentos[eq] ? "checked" : "unchecked"}
-                        onPress={() => handleEquipameto(eq)}
-                        key={eq}
-                        label={eq.charAt(0).toUpperCase() + eq.slice(1)}
-                    />
-                ))}
-            </View>}
-            {show && <View>
-                {treinos.map((treino, index) => (
-                    <View key={`${treino.id}_view${index}`} style={styles.card}>
-                        <Image
-                            source={{ uri: `https://github.com/yuhonas/free-exercise-db/blob/main/exercises/${treino.images[0]}?raw=true` }}
-                            style={styles.poster}
-                            key={`${treino.id}_img${index}`}
-                        />
-                        <Text style={styles.title} key={`${treino.id}_txt${index}`}>{treino.name}</Text>
-                    </View>
-                ))}
-            </View>}
+        <SafeAreaView style={{ flex: 1, padding: 15 }}>
+            <Text style={styles.text}>Exercício 6: Aplicativo de Rastreamento de Exercício</Text>
             <Button
                 icon="shoe-sneaker"
                 mode="contained"
                 onPress={handleFiltrar}>
                 <Text style={{ color: 'white' }}>{textButton}</Text>
             </Button>
+            {!show && <View>
+                <ScrollView style={{ height: '80%' }}>
+                    <Divider />
+                    <Text style={styles.title} variant="headlineSmall">Level</Text>
+                    <RadioButton.Group onValueChange={value => setLevel(value)} value={level}>
+                        <RadioButton.Item label="Iniciante" value="iniciante" />
+                        <RadioButton.Item label="Intermediário" value="intermediário" />
+                        <RadioButton.Item label="Especialista" value="especialista" />
+                    </RadioButton.Group>
+                    <Divider />
+                    <Text style={styles.title} variant="headlineSmall">Categoria</Text>
+                    {Array.from(dict.category).map(cat => (
+                        <Checkbox.Item
+                            status={categorias[cat] ? "checked" : "unchecked"}
+                            onPress={() => handleCategoria(cat)}
+                            key={cat}
+                            label={cat.charAt(0).toUpperCase() + cat.slice(1)}
+                        />
+                    ))}
+                    <Divider />
+                    <Text style={styles.title} variant="headlineSmall">Equipamento</Text>
+                    {Array.from(dict.equipment).map(eq => (
+                        <Checkbox.Item
+                            status={equipamentos[eq] ? "checked" : "unchecked"}
+                            onPress={() => handleEquipameto(eq)}
+                            key={eq}
+                            label={eq.charAt(0).toUpperCase() + eq.slice(1)}
+                        />
+                    ))}
+                </ScrollView>
+            </View>}
+            {show && <View>
+                <ScrollView style={{ height: '80%' }}>
+                    {treinos.map((treino, index) => (
+                        <View key={`${treino.id}_view${index}`} style={styles.card}>
+                            <Image
+                                source={{ uri: `https://github.com/yuhonas/free-exercise-db/blob/main/exercises/${treino.images[0]}?raw=true` }}
+                                style={styles.poster}
+                                key={`${treino.id}_img${index}`}
+                            />
+                            <Text style={styles.title} key={`${treino.id}_txt${index}`}>{treino.name}</Text>
+                        </View>
+                    ))}
+                </ScrollView>
+            </View>}
         </SafeAreaView >
     )
 }

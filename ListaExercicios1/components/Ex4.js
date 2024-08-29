@@ -21,7 +21,7 @@ const data = {
     },
 }
 const getData = (value, tipo) => {
-    const sorted = Object.entries(data).toSorted((a, b) => Number(a[0]) - Number(b[0]));
+    const sorted = Object.entries(data).sort((a, b) => Number(a[0]) - Number(b[0]));
     for (const obj of sorted) {
         if (Number(value) <= Number(obj[0])) {
             return obj[1][tipo];
@@ -58,12 +58,13 @@ export default function Ex4() {
     }
 
     return (
-        <View>
-            <Text style={styles.text}><b>Exercício 4: </b>Aplicativo de Monitoramento de Saúde</Text>
+        <View style={{padding: 15}}>
+            <Text style={styles.text}>Exercício 4: Aplicativo de Monitoramento de Saúde</Text>
             <TextInput
                 style={styles.mb}
                 label="Nível de Energia"
                 value={energia}
+                placeholder='0-10'
                 onChangeText={text => setEnergia(text.replace(',', '.'))}
                 inputMode='decimal'
                 keyboardType='numeric'
@@ -72,6 +73,7 @@ export default function Ex4() {
                 style={styles.mb}
                 label="Qualidade de Sono"
                 value={sono}
+                placeholder='0-10'
                 onChangeText={text => setSono(text.replace(',', '.'))}
                 inputMode='decimal'
                 keyboardType='numeric'
@@ -80,6 +82,7 @@ export default function Ex4() {
                 style={styles.mb}
                 label="Nível de Estresse"
                 value={estresse}
+                placeholder='0-10'
                 onChangeText={text => setEstresse(text.replace(',', '.'))}
                 inputMode='decimal'
                 keyboardType='numeric'
