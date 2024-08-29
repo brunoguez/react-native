@@ -1,15 +1,22 @@
 import React from 'react'
-import { Text, SafeAreaView, TextInput, StyleSheet, Pressable } from 'react-native'
-import Botao from './Botao';
+import { Text, SafeAreaView, TextInput, StyleSheet, Pressable, Image } from 'react-native'
 
-export default function Ex1({ viewStyle }) {
+export default function Ex1() {
     const [peso, setPeso] = React.useState('');
     const [altura, setAltura] = React.useState('');
     const [result, setResult] = React.useState('');
     const [viewResultado, onChangeResultado] = React.useState(false);
     return (
-        <SafeAreaView style={viewStyle}>
-            <Text style={styles.text} > <b>Exercício 1:&nbsp;</b>Calculadora de IMC Interativa</Text>
+        <SafeAreaView style={styles.container}>
+            <Text style={styles.text} > Exercício 1: Calculadora de IMC Interativa</Text>
+            <Image
+                    source={{ uri: 'https://image.tmdb.org/t/p/w200/kWoWvS7qQpgRUe6op45a1FbkO8g.jpg' }}
+                    style={{
+                        width: '100%',
+                        height: 300,
+                        borderRadius: 10,
+                    }}
+                />
             <TextInput
                 style={styles.input}
                 value={peso}
@@ -62,13 +69,19 @@ export default function Ex1({ viewStyle }) {
             }}>
                 <Text style={styles.textButton}>Calcular!</Text>
             </Pressable>
-            <Botao text="aaa" onPress={() => console.log('certooo')} />
             {viewResultado && <Text style={styles.text}>{result}</Text>}
         </SafeAreaView >
     )
 }
 
 const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor: '#fff',
+        alignItems: 'center',
+        justifyContent: 'center',
+        width: '100%'
+    },
     text: {
         fontSize: 15,
         textAlign: 'center',

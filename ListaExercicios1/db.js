@@ -52687,3 +52687,503 @@ export const exercises = [
         }
     }
 ];
+
+export const trip = [
+    {
+        "id": 1,
+        "nome": "Belém",
+        "tipo": "cidade histórica",
+        "estado": "PA",
+        "atracoes": [
+            "Mercado Ver-o-Peso",
+            "Basílica de Nazaré",
+            "Estação das Docas"
+        ],
+        "atividades": [
+            "Degustação de açaí no Ver-o-Peso",
+            "Visita ao Mangal das Garças",
+            "Passeio de barco pelo Rio Guamá"
+        ]
+    },
+    {
+        "id": 2,
+        "nome": "Bonito",
+        "tipo": "cachoeira",
+        "estado": "MS",
+        "atracoes": [
+            "Gruta do Lago Azul",
+            "Rio da Prata",
+            "Cachoeira Boca da Onça"
+        ],
+        "atividades": [
+            "Mergulho no Rio da Prata",
+            "Visita à Gruta do Lago Azul",
+            "Rapel na Boca da Onça"
+        ]
+    },
+    {
+        "id": 3,
+        "nome": "Brasília",
+        "tipo": "cidade histórica",
+        "estado": "DF",
+        "atracoes": [
+            "Congresso Nacional",
+            "Catedral Metropolitana",
+            "Ponte JK"
+        ],
+        "atividades": [
+            "Visita guiada ao Congresso Nacional",
+            "Passeio pelo Eixo Monumental",
+            "Visita ao Museu Nacional"
+        ]
+    },
+    {
+        "id": 4,
+        "nome": "Búzios",
+        "tipo": "praia",
+        "estado": "RJ",
+        "atracoes": [
+            "Praia de Geribá",
+            "Rua das Pedras",
+            "Praia da Ferradura"
+        ],
+        "atividades": [
+            "Passeio de barco pelas praias",
+            "Mergulho em Arraial do Cabo",
+            "Visita ao Orla Bardot"
+        ]
+    },
+    {
+        "id": 5,
+        "nome": "Caldas Novas",
+        "tipo": "cidade termal",
+        "estado": "GO",
+        "atracoes": [
+            "Parque Estadual da Serra de Caldas",
+            "Lagoa Quente de Pirapitinga",
+            "Jardim Japonês"
+        ],
+        "atividades": [
+            "Banho nas águas termais",
+            "Visita ao Parque Estadual da Serra de Caldas",
+            "Caminhada pelo Jardim Japonês"
+        ]
+    },
+    {
+        "id": 6,
+        "nome": "Campos do Jordão",
+        "tipo": "montanha",
+        "estado": "SP",
+        "atracoes": [
+            "Morro do Elefante",
+            "Pedra do Baú",
+            "Parque Amantikir"
+        ],
+        "atividades": [
+            "Trilha na Pedra do Baú",
+            "Passeio de teleférico",
+            "Visita ao Museu Felícia Leirner"
+        ]
+    },
+    {
+        "id": 7,
+        "nome": "Chapada Diamantina",
+        "tipo": "montanha",
+        "estado": "BA",
+        "atracoes": [
+            "Cachoeira da Fumaça",
+            "Morro do Pai Inácio",
+            "Poço Encantado"
+        ],
+        "atividades": [
+            "Trilha na Cachoeira da Fumaça",
+            "Rapel no Morro do Pai Inácio",
+            "Visita ao Poço Azul"
+        ]
+    },
+    {
+        "id": 8,
+        "nome": "Curitiba",
+        "tipo": "cidade histórica",
+        "estado": "PR",
+        "atracoes": [
+            "Jardim Botânico",
+            "Ópera de Arame",
+            "Museu Oscar Niemeyer"
+        ],
+        "atividades": [
+            "Caminhada no Jardim Botânico",
+            "Passeio de trem até Morretes",
+            "Visita ao Museu Oscar Niemeyer"
+        ]
+    },
+    {
+        "id": 9,
+        "nome": "Florianópolis",
+        "tipo": "praia",
+        "estado": "SC",
+        "atracoes": [
+            "Lagoa da Conceição",
+            "Praia da Joaquina",
+            "Ponte Hercílio Luz"
+        ],
+        "atividades": [
+            "Surfe na Praia Mole",
+            "Passeio de barco na Lagoa",
+            "Caminhada na Costa da Lagoa"
+        ]
+    },
+    {
+        "id": 10,
+        "nome": "Fortaleza",
+        "tipo": "praia",
+        "estado": "CE",
+        "atracoes": [
+            "Praia do Futuro",
+            "Centro Dragão do Mar de Arte e Cultura",
+            "Mercado Central"
+        ],
+        "atividades": [
+            "Passeio de buggy nas dunas de Cumbuco",
+            "Visita ao Beach Park",
+            "Tour cultural pelo Dragão do Mar"
+        ]
+    },
+    {
+        "id": 11,
+        "nome": "Foz do Iguaçu",
+        "tipo": "cachoeira",
+        "estado": "PR",
+        "atracoes": [
+            "Cataratas do Iguaçu",
+            "Parque das Aves",
+            "Usina de Itaipu"
+        ],
+        "atividades": [
+            "Passeio de barco nas Cataratas",
+            "Visita ao Parque das Aves",
+            "Tour pela Usina de Itaipu"
+        ]
+    },
+    {
+        "id": 12,
+        "nome": "Gramado",
+        "tipo": "montanha",
+        "estado": "RS",
+        "atracoes": [
+            "Lago Negro",
+            "Mini Mundo",
+            "Rua Coberta"
+        ],
+        "atividades": [
+            "Passeio de pedalinho no Lago Negro",
+            "Visita ao Mini Mundo",
+            "Degustação de chocolates artesanais"
+        ]
+    },
+    {
+        "id": 13,
+        "nome": "Ilha Grande",
+        "tipo": "praia",
+        "estado": "RJ",
+        "atracoes": [
+            "Lagoa Azul",
+            "Praia do Aventureiro",
+            "Praia de Lopes Mendes"
+        ],
+        "atividades": [
+            "Mergulho na Lagoa Azul",
+            "Caminhada até a Praia do Aventureiro",
+            "Passeio de barco pela ilha"
+        ]
+    },
+    {
+        "id": 14,
+        "nome": "Ilhabela",
+        "tipo": "praia",
+        "estado": "SP",
+        "atracoes": [
+            "Praia do Curral",
+            "Cachoeira do Gato",
+            "Praia de Castelhanos"
+        ],
+        "atividades": [
+            "Passeio de barco até Castelhanos",
+            "Trilha até a Cachoeira do Gato",
+            "Mergulho nos naufrágios"
+        ]
+    },
+    {
+        "id": 15,
+        "nome": "Jericoacoara",
+        "tipo": "praia",
+        "estado": "CE",
+        "atracoes": [
+            "Pedra Furada",
+            "Lagoa do Paraíso",
+            "Praia de Jericoacoara"
+        ],
+        "atividades": [
+            "Passeio de buggy até a Pedra Furada",
+            "Stand-up paddle na Lagoa do Paraíso",
+            "Visita ao Mangue Seco"
+        ]
+    },
+    {
+        "id": 16,
+        "nome": "Lençóis Maranhenses",
+        "tipo": "deserto",
+        "estado": "MA",
+        "atracoes": [
+            "Lagoa Bonita",
+            "Lagoa Azul",
+            "Atins"
+        ],
+        "atividades": [
+            "Passeio de 4x4 pelos Lençóis",
+            "Mergulho nas lagoas",
+            "Caminhada até o Canto do Atins"
+        ]
+    },
+    {
+        "id": 17,
+        "nome": "Maceió",
+        "tipo": "praia",
+        "estado": "AL",
+        "atracoes": [
+            "Praia do Francês",
+            "Piscinas Naturais de Pajuçara",
+            "Praia de Ipioca"
+        ],
+        "atividades": [
+            "Mergulho nas piscinas naturais",
+            "Passeio de jangada",
+            "Visita ao Museu Théo Brandão"
+        ]
+    },
+    {
+        "id": 18,
+        "nome": "Manaus",
+        "tipo": "cidade histórica",
+        "estado": "AM",
+        "atracoes": [
+            "Teatro Amazonas",
+            "Encontro das Águas",
+            "Museu do Seringal"
+        ],
+        "atividades": [
+            "Passeio de barco pelo Rio Negro",
+            "Visita à Floresta Amazônica",
+            "Tour histórico pelo centro de Manaus"
+        ]
+    },
+    {
+        "id": 19,
+        "nome": "Natal",
+        "tipo": "praia",
+        "estado": "RN",
+        "atracoes": [
+            "Praia de Ponta Negra",
+            "Forte dos Reis Magos",
+            "Parque das Dunas"
+        ],
+        "atividades": [
+            "Passeio de buggy nas dunas",
+            "Mergulho nos Parrachos de Maracajaú",
+            "Visita ao Cajueiro de Pirangi"
+        ]
+    },
+    {
+        "id": 20,
+        "nome": "Ouro Preto",
+        "tipo": "cidade histórica",
+        "estado": "MG",
+        "atracoes": [
+            "Igreja de São Francisco de Assis",
+            "Museu da Inconfidência",
+            "Casa dos Contos"
+        ],
+        "atividades": [
+            "Visita às igrejas barrocas",
+            "Passeio pelo Centro Histórico",
+            "Trilha até a Mina da Passagem"
+        ]
+    },
+    {
+        "id": 21,
+        "nome": "Paraty",
+        "tipo": "cidade histórica",
+        "estado": "RJ",
+        "atracoes": [
+            "Centro Histórico",
+            "Praia do Sono",
+            "Cachoeira do Tobogã"
+        ],
+        "atividades": [
+            "Passeio de escuna",
+            "Caminhada pela Trilha do Ouro",
+            "Visita às cachoeiras"
+        ]
+    },
+    {
+        "id": 22,
+        "nome": "Petrópolis",
+        "tipo": "cidade histórica",
+        "estado": "RJ",
+        "atracoes": [
+            "Museu Imperial",
+            "Palácio de Cristal",
+            "Catedral de São Pedro de Alcântara"
+        ],
+        "atividades": [
+            "Visita ao Museu Imperial",
+            "Passeio de charrete pelo centro histórico",
+            "Caminhada no Parque Nacional da Serra dos Órgãos"
+        ]
+    },
+    {
+        "id": 23,
+        "nome": "Porto Alegre",
+        "tipo": "cidade histórica",
+        "estado": "RS",
+        "atracoes": [
+            "Mercado Público",
+            "Museu de Arte do Rio Grande do Sul",
+            "Parque Farroupilha"
+        ],
+        "atividades": [
+            "Caminhada no Parque Farroupilha",
+            "Visita ao Museu Iberê Camargo",
+            "Tour gastronômico"
+        ]
+    },
+    {
+        "id": 24,
+        "nome": "Porto de Galinhas",
+        "tipo": "praia",
+        "estado": "PE",
+        "atracoes": [
+            "Piscinas Naturais",
+            "Praia de Maracaípe",
+            "Praia do Muro Alto"
+        ],
+        "atividades": [
+            "Passeio de jangada nas piscinas naturais",
+            "Surfe em Maracaípe",
+            "Visita ao Pontal de Maracaípe"
+        ]
+    },
+    {
+        "id": 25,
+        "nome": "Porto Seguro",
+        "tipo": "praia",
+        "estado": "BA",
+        "atracoes": [
+            "Praia do Espelho",
+            "Centro Histórico",
+            "Passarela do Álcool"
+        ],
+        "atividades": [
+            "Visita ao Centro Histórico",
+            "Passeio de barco em Arraial d'Ajuda",
+            "Mergulho em recifes de corais"
+        ]
+    },
+    {
+        "id": 26,
+        "nome": "Recife",
+        "tipo": "cidade histórica",
+        "estado": "PE",
+        "atracoes": [
+            "Praia de Boa Viagem",
+            "Instituto Ricardo Brennand",
+            "Marco Zero"
+        ],
+        "atividades": [
+            "Passeio de catamarã pelo Rio Capibaribe",
+            "Visita à Oficina Francisco Brennand",
+            "Tour pelo Recife Antigo"
+        ]
+    },
+    {
+        "id": 27,
+        "nome": "Rio de Janeiro",
+        "tipo": "praia",
+        "estado": "RJ",
+        "atracoes": [
+            "Cristo Redentor",
+            "Pão de Açúcar",
+            "Praia de Copacabana",
+            "Lagoa Rodrigo de Freitas"
+        ],
+        "atividades": [
+            "Passeio de bondinho",
+            "Visita ao Museu do Amanhã",
+            "Trilha na Floresta da Tijuca"
+        ]
+    },
+    {
+        "id": 28,
+        "nome": "Salvador",
+        "tipo": "praia",
+        "estado": "BA",
+        "atracoes": [
+            "Pelourinho",
+            "Elevador Lacerda",
+            "Igreja do Bonfim"
+        ],
+        "atividades": [
+            "Passeio pelo Pelourinho",
+            "Visita ao Mercado Modelo",
+            "Tour gastronômico"
+        ]
+    },
+    {
+        "id": 29,
+        "nome": "Serra Gaúcha",
+        "tipo": "montanha",
+        "estado": "RS",
+        "atracoes": [
+            "Vale dos Vinhedos",
+            "Caminhos de Pedra",
+            "Parque do Caracol"
+        ],
+        "atividades": [
+            "Degustação de vinhos",
+            "Tour pelas vinícolas",
+            "Passeio de Maria Fumaça"
+        ]
+    },
+    {
+        "id": 30,
+        "nome": "São Luís",
+        "tipo": "cidade histórica",
+        "estado": "MA",
+        "atracoes": [
+            "Centro Histórico",
+            "Teatro Arthur Azevedo",
+            "Palácio dos Leões"
+        ],
+        "atividades": [
+            "Tour pelo Centro Histórico",
+            "Visita ao Museu Histórico e Artístico do Maranhão",
+            "Caminhada pela Praia de São Marcos"
+        ]
+    },
+    {
+        "id": 31,
+        "nome": "São Paulo",
+        "tipo": "cidade histórica",
+        "estado": "SP",
+        "atracoes": [
+            "Avenida Paulista",
+            "MASP",
+            "Parque Ibirapuera"
+        ],
+        "atividades": [
+            "Passeio cultural na Avenida Paulista",
+            "Visita ao MASP",
+            "Caminhada no Parque Ibirapuera"
+        ]
+    }
+];      

@@ -91,9 +91,8 @@ const dict = {
     level: mapear('level'),
     mechanic: mapear('mechanic'),
 }
-console.log({ ex, dict })
 
-const Ex6 = ({ viewStyle }) => {
+const Ex6 = () => {
 
     const [level, setLevel] = React.useState('iniciante');
     const [categorias, setCategorias] = React.useState(
@@ -136,7 +135,7 @@ const Ex6 = ({ viewStyle }) => {
 
     return (
 
-        <SafeAreaView style={viewStyle}>
+        <SafeAreaView >
             <Text style={styles.text}><b>Exercício 6: </b>Aplicativo de Rastreamento de Exercício</Text>
             {!show && <View>
                 <Divider />

@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, TouchableOpacity, StyleSheet, ScrollView, Image } from 'react-native';
 import { generos } from '../db';
 import Botao from './Botao';
 import MovieCarousel from './MovieCarousel';
 
 const categories = generos;
-export default function Ex2({ viewStyle }) {
-    const [selectedButtons, setSelectedButtons] = useState([]);
+export default function Ex2() {
+    const [selectedButtons, setSelectedButtons] = useState([]); 
     const [viewGeneros, setViewGeneros] = useState(true);
     const [selectedGenero, setSelectedGenero] = useState([]);
     const getMapSelectedButtonsId = () => selectedButtons.map(a => a.id);
@@ -20,7 +20,6 @@ export default function Ex2({ viewStyle }) {
     };
 
     const handleProcurarFilmes = () => {
-        console.log(selectedButtons)
         setSelectedGenero(selectedButtons);
         setViewGeneros(false);
     }
@@ -42,8 +41,8 @@ export default function Ex2({ viewStyle }) {
     // }, []);
 
     return (
-        <View style={[viewStyle, styles.container]}>
-            {viewGeneros && <View>
+        <View style={[{width: '100%'}]}>
+            {viewGeneros && <ScrollView style={{height: 500, width: '100%'}}>
                 {categories.map(category => (
                     <TouchableOpacity
                         key={category.id}
@@ -61,28 +60,29 @@ export default function Ex2({ viewStyle }) {
                         </Text>
                     </TouchableOpacity>
                 ))}
-            </View>}
+            </ScrollView>}
             {viewGeneros && <Botao text={"Indicar Filmes!"} onPress={handleProcurarFilmes} />}
-            {!viewGeneros && <View style={styles.container}>
+            {!viewGeneros && <ScrollView style={[{height: 500}]}>
                 {selectedGenero.map((category) => (
                     <View key={category.id}>
                         <Text style={styles.genreTitle}>{category.name}</Text>
                         <MovieCarousel movies={category.filmes} />
                     </View>
                 ))}
-            </View>}
+            </ScrollView>}
             {!viewGeneros && <Botao text={"Voltar!"} onPress={() => setViewGeneros(true)} />}
+            
         </View>
     );
 };
 
 const styles = StyleSheet.create({
     container: {
-        flex: 1,
         flexDirection: 'row',
         flexWrap: 'wrap',
         justifyContent: 'space-between',
         padding: 10,
+        width: '100%'
     },
     button: {
         minWidth: '32%',
@@ -97,7 +97,7 @@ const styles = StyleSheet.create({
         backgroundColor: 'black',
     },
     buttonText: {
-        fontSize: '12px',
+        fontSize: 12,
         color: 'black',
         textAlign: 'center',
     },

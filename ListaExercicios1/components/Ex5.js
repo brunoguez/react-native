@@ -5,7 +5,7 @@ import { Button, TextInput } from 'react-native-paper';
 
 const getRandom = () => Math.floor(Math.random() * 1001);
 
-export default function Ex5({ viewStyle }) {
+export default function Ex5() {
 
     const [valor, setValor] = useState(null);
     const [tentativa, setTentativa] = useState('');
@@ -15,7 +15,7 @@ export default function Ex5({ viewStyle }) {
     const handleChute = () => {
         console.log({ tentativa, valor, buttonProps, exibir })
 
-        if(exibir){
+        if (exibir) {
             setTentativa('')
             setValor(getRandom());
             setExibir(false);
@@ -37,7 +37,7 @@ export default function Ex5({ viewStyle }) {
             setExibir(true);
             return;
         }
-        if(valor > numero){
+        if (valor > numero) {
             setButtonProps((prop) => ({ ...prop, text: "É maior... Tente de novo" }));
             return;
         }
@@ -49,7 +49,7 @@ export default function Ex5({ viewStyle }) {
     }, [])
 
     return (
-        <View style={viewStyle}>
+        <View >
             <Text style={styles.text}><b>Exercício 5: </b>Jogo de Adivinhação</Text>
             <Text style={[styles.text, styles.textResult]}>{exibir ? valor : "????"}</Text>
             <TextInput

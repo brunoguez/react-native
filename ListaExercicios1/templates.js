@@ -28,7 +28,10 @@ const estilos = {
         color: 'white',
     },
     mb: {
-        marginBottom: '1em'
+        marginBottom: 10
+    },
+    mt: {
+        marginTop: 10
     },
 };
 

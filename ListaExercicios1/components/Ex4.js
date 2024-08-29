@@ -30,7 +30,7 @@ const getData = (value, tipo) => {
     return data[10][tipo];
 }
 
-export default function Ex4({ viewStyle }) {
+export default function Ex4() {
     const [energia, setEnergia] = React.useState("");
     const [sono, setSono] = React.useState("");
     const [estresse, setEstresse] = React.useState("");
@@ -58,7 +58,7 @@ export default function Ex4({ viewStyle }) {
     }
 
     return (
-        <View style={viewStyle}>
+        <View>
             <Text style={styles.text}><b>Exercício 4: </b>Aplicativo de Monitoramento de Saúde</Text>
             <TextInput
                 style={styles.mb}

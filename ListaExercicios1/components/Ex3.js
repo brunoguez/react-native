@@ -3,7 +3,7 @@ import React, { useState } from 'react'
 import Botao from './Botao';
 import estilos from '../templates';
 
-export default function Ex3({ viewStyle }) {
+export default function Ex3() {
     const [despesas, setDespesas] = useState(0);
     const [receitas, setReceitas] = useState(0);
     const [viewResultado, setViewResultado] = useState(false);
@@ -43,8 +43,8 @@ export default function Ex3({ viewStyle }) {
     }
 
     return (
-        <View style={viewStyle}>
-            <Text style={styles.text} > <b>Exercício 3:&nbsp;</b>Aplicativo de Controle de Despesas</Text>
+        <View>
+            <Text style={styles.text} > Exercício 3: Aplicativo de Controle de Despesas</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={(text) => setDespesas(text.replace(",", "."))}
