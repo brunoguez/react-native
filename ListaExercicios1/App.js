@@ -1,6 +1,6 @@
 import { StyleSheet, SafeAreaView, ScrollView, TextInput, View } from 'react-native';
-import Ex2 from './components/Ex2';
 import Ex1 from './components/Ex1';
+import Ex2 from './components/Ex2';
 import Ex3 from './components/Ex3';
 import Ex4 from './components/Ex4';
 import Ex5 from './components/Ex5';
