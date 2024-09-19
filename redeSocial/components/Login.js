@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { SafeAreaView, StyleSheet, View } from 'react-native';
+import { SafeAreaView, StyleSheet } from 'react-native';
 import { Card, Text, TextInput, Button } from 'react-native-paper';
 
 const Login = ({ navigation }) => {
@@ -28,10 +28,13 @@ const Login = ({ navigation }) => {
             onChangeText={text => setSenha(text)}
             style={[styles.m(20), styles.input]}
           />
-          <Button style={styles.m(10)} icon="login" mode="contained" onPress={() => navigation.navigate('Principal')}>
+          <Button style={styles.m(10)} icon="login" mode="contained" onPress={() => {
+            navigation.navigate('Principal');
+            //navigation.replace('Principal');
+          }}>
             Entrar
           </Button>
-          <Button icon="plus" mode="text" onPress={() => console.log('Pressed')}>
+          <Button icon="plus" mode="text" onPress={() => navigation.navigate('Perfil')}>
             Criar conta
           </Button>
         </Card.Content>

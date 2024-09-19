@@ -1,0 +1,39 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "nome": "Bruno",
+            "email": "bruno@bruno.br",
+            "senha": "b123",
+            "sexo": "m"
+        },
+        {
+            "id": 2,
+            "nome": "Lorrayne",
+            "email": "looh@looh.br",
+            "senha": "l123",
+            "sexo": "f"
+        }
+    ],
+    "posts": [
+        {
+            "id": 1,
+            "userId": 1,
+            "texto": "Cachorro preto",
+            "imagemURL": "https://picsum.photos/id/237/300/300",
+            "curtidas": 3,
+            "comentarios": [
+                {
+                    "id": 1,
+                    "userId": 2,
+                    "texto": "Lindo"
+                },
+                {
+                    "id": 2,
+                    "userId": 1,
+                    "texto": "Top hein, amei ❤️"
+                }
+            ]
+        }
+    ]
+}
