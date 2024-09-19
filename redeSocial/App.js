@@ -3,13 +3,16 @@ import Entypo from '@expo/vector-icons/Entypo';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import { PaperProvider } from 'react-native-paper';
-import Navigation from './components/Navigation';
 import { SafeAreaProvider, SafeAreaView } from 'react-native-safe-area-context';
 import { StyleSheet } from 'react-native'
+import Navigation from './components/Navigation';
 import Login from './components/Login';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 
 // Keep the splash screen visible while we fetch resources
 SplashScreen.preventAutoHideAsync();
+const Stack = createStackNavigator();
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -47,7 +50,12 @@ export default function App() {
     <PaperProvider>
       <SafeAreaProvider>
         <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-          <Login />
+        <NavigationContainer>
+          <Stack.Navigator initialRouteName="Login">
+            <Stack.Screen name="Login" component={Login} />
+            <Stack.Screen name="Principal" component={Navigation} />
+          </Stack.Navigator>
+          </NavigationContainer>
         </SafeAreaView>
       </SafeAreaProvider>
     </PaperProvider>

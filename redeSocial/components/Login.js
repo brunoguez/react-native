@@ -2,8 +2,10 @@ import * as React from 'react';
 import { SafeAreaView, StyleSheet, View } from 'react-native';
 import { Card, Text, TextInput, Button } from 'react-native-paper';
 
-const Login = () => {
+const Login = ({ navigation }) => {
   const [user, setUser] = React.useState("");
+  const [exibeSenha, setExibeSenha] = React.useState(true);
+  const [senha, setSenha] = React.useState("");
 
   return (
     <SafeAreaView style={styles.container}>
@@ -18,15 +20,15 @@ const Login = () => {
           />
           <TextInput
             label="Senha"
-            secureTextEntry
-            value={user}
+            secureTextEntry={exibeSenha}
+            value={senha}
             right={
-              <TextInput.Icon icon="eye" onPress={(a) => console.log(console.log(JSON.stringify(a, null, 2)))}/>
+              <TextInput.Icon icon="eye" onPress={() => setExibeSenha(atual => !atual)} />
             }
-            onChangeText={text => setUser(text)}
+            onChangeText={text => setSenha(text)}
             style={[styles.m(20), styles.input]}
           />
-          <Button style={styles.m(10)} icon="login" mode="contained" onPress={() => console.log('Pressed')}>
+          <Button style={styles.m(10)} icon="login" mode="contained" onPress={() => navigation.navigate('Principal')}>
             Entrar
           </Button>
           <Button icon="plus" mode="text" onPress={() => console.log('Pressed')}>
