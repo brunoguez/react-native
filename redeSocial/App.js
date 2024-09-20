@@ -9,6 +9,9 @@ import Perfil from './components/Perfil';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import { StatusBar } from 'react-native';
+import { AppProvider } from './components/AppProvider';
+import { Create, Existe } from './src/file';
+
 
 SplashScreen.preventAutoHideAsync();
 const Stack = createStackNavigator();
@@ -19,6 +22,9 @@ export default function App() {
   useEffect(() => {
     async function prepare() {
       try {
+        const existe = await Existe()
+        if (!existe)
+          await Create()
         await new Promise(resolve => setTimeout(resolve, 2000));
       } catch (e) {
         console.warn(e);
@@ -42,21 +48,23 @@ export default function App() {
 
   return (
     <PaperProvider>
-      <SafeAreaProvider>
-        <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
-          <StatusBar
-            barStyle="dark-content" 
-            backgroundColor="#b2ddee"
-          />
-          <NavigationContainer>
-            <Stack.Navigator initialRouteName="Login">
-              <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
-              <Stack.Screen options={{ headerShown: false }} name="Principal" component={Navigation} />
-              <Stack.Screen options={{ headerShown: false }} name="Perfil" component={Perfil} />
-            </Stack.Navigator>
-          </NavigationContainer>
-        </SafeAreaView>
-      </SafeAreaProvider>
+      <AppProvider>
+        <SafeAreaProvider>
+          <SafeAreaView style={styles.container} onLayout={onLayoutRootView}>
+            <StatusBar
+              barStyle="dark-content"
+              backgroundColor="#b2ddee"
+            />
+            <NavigationContainer>
+              <Stack.Navigator initialRouteName="Login">
+                <Stack.Screen options={{ headerShown: false }} name="Login" component={Login} />
+                <Stack.Screen options={{ headerShown: false }} name="Principal" component={Navigation} />
+                <Stack.Screen options={{ headerShown: false }} name="Perfil" component={Perfil} />
+              </Stack.Navigator>
+            </NavigationContainer>
+          </SafeAreaView>
+        </SafeAreaProvider>
+      </AppProvider>
     </PaperProvider>
   );
 }

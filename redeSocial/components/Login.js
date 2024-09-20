@@ -1,11 +1,19 @@
 import * as React from 'react';
 import { SafeAreaView, StyleSheet } from 'react-native';
-import { Card, Text, TextInput, Button } from 'react-native-paper';
+import { Card, Text, TextInput, Button, Snackbar } from 'react-native-paper';
+import { Read } from '../src/file';
+import { AppContext } from './AppProvider';
+
 
 const Login = ({ navigation }) => {
-  const [user, setUser] = React.useState("");
+  const [email, setEmail] = React.useState("");
   const [exibeSenha, setExibeSenha] = React.useState(true);
   const [senha, setSenha] = React.useState("");
+  const [snackVisible, setSnackVisible] = React.useState(false);
+
+  const onToggleSnackBar = () => setSnackVisible(!snackVisible);
+  const onDismissSnackBar = () => setSnackVisible(false);
+  const { setUsuarioLogado } = React.useContext(AppContext)
 
   return (
     <SafeAreaView style={styles.container}>
@@ -14,8 +22,8 @@ const Login = ({ navigation }) => {
           <Text style={styles.title}>Login</Text>
           <TextInput
             label="Email"
-            value={user}
-            onChangeText={text => setUser(text)}
+            value={email}
+            onChangeText={text => setEmail(text)}
             style={[styles.m(10), styles.input]}
           />
           <TextInput
@@ -28,9 +36,16 @@ const Login = ({ navigation }) => {
             onChangeText={text => setSenha(text)}
             style={[styles.m(20), styles.input]}
           />
-          <Button style={styles.m(10)} icon="login" mode="contained" onPress={() => {
-            navigation.navigate('Principal');
-            //navigation.replace('Principal');
+          <Button style={styles.m(10)} icon="login" mode="contained" onPress={async () => {
+            const data = await Read();
+            const userLogar = data.users.find(user => user.email == email && user.senha == senha)
+            if (userLogar) {
+              setUsuarioLogado(userLogar)
+              navigation.navigate('Principal');
+              return
+            }
+            if (!snackVisible)
+              onToggleSnackBar()
           }}>
             Entrar
           </Button>
@@ -39,6 +54,15 @@ const Login = ({ navigation }) => {
           </Button>
         </Card.Content>
       </Card>
+      <Snackbar
+        visible={snackVisible}
+        onDismiss={onDismissSnackBar}
+        action={{
+          label: 'Voltar',
+          onPress: onDismissSnackBar,
+        }}>
+        Usuário inválido
+      </Snackbar>
     </SafeAreaView>
   );
 };

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
-import Feed from './Feed';
 import Perfil from './Perfil';
+import Feed from './Feed';
 
 const FeedRoute = () => <Feed />;
 
