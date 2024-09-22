@@ -2,14 +2,7 @@ import * as React from 'react';
 import { BottomNavigation, Text } from 'react-native-paper';
 import Perfil from './Perfil';
 import Feed from './Feed';
-
-const FeedRoute = () => <Feed />;
-
-const PostRoute = () => <Text>Postar</Text>;
-
-const ConfiguracaoRoute = () => <Perfil />;
-
-const NotificationsRoute = () => <Text>Notificações</Text>;
+import Postar from './Postar';
 
 const Navigation = () => {
     const [index, setIndex] = React.useState(0);
@@ -19,6 +12,17 @@ const Navigation = () => {
         { key: 'notifications', title: 'Notificações', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
         { key: 'config', title: 'Configurações', focusedIcon: 'cog', unfocusedIcon: 'cog-outline' },
     ]);
+
+    const navigateTo = (key) => {
+        console.log(key)
+        const indexKey = routes.findIndex(a => a.key == key) ?? 0
+        setIndex(indexKey)
+    }
+
+    const FeedRoute = () => <Feed />;
+    const PostRoute = () => <Postar navigate={navigateTo} />;
+    const ConfiguracaoRoute = () => <Perfil navigateTo={navigateTo} />;
+    const NotificationsRoute = () => <Text>Notificações</Text>;
 
     const renderScene = BottomNavigation.SceneMap({
         feed: FeedRoute,

@@ -5,10 +5,8 @@ import { Write, Read } from '../src/file'
 import { AppContext } from './AppProvider';
 
 const Feed = () => {
+
     const { usuarioLogado } = React.useContext(AppContext);
-
-    console.log(usuarioLogado)
-
     const [posts, setPosts] = React.useState(null);
     const [users, setUsers] = React.useState(null);
     const [postComentarios, setPostComentarios] = React.useState(null)
@@ -44,8 +42,6 @@ const Feed = () => {
     const CardPost = ({ post }) => {
 
         const handleCurtida = async (idPost) => {
-            showModal(post)
-
             try {
                 const jsonData = await Read();
 
@@ -76,20 +72,39 @@ const Feed = () => {
                         <Text style={styles.userName}>{user.nome}</Text>
                         <Text style={styles.postText}>{texto}</Text>
                     </View>
-                    <View style={styles.textContainer}>
-                        <IconButton
-                            icon="thumb-up"
-                            iconColor="#f2be00"
-                            mode="contained"
-                            size={20}
-                            onPress={() => handleCurtida(id)}
-                            style={{ marginLeft: 0 }}
-                        />
-                        <Text>{curtidas} curtidas</Text>
-                        <Text style={styles.postText}>📝 {comentarios.length} Comentários</Text>
+                    <View style={{ flex: 1, flexDirection: 'row' }}>
+
+                        <View style={[styles.textContainer, { width: '50%' }]}>
+                            <IconButton
+                                icon="thumb-up"
+                                iconColor="#f2be00"
+                                mode="contained"
+                                size={20}
+                                onPress={() => handleCurtida(id)}
+                                style={{ marginLeft: 0 }}
+                            />
+                            <Text>{curtidas} curtidas</Text>
+                        </View>
+                        <View style={{
+                            flexDirection: 'row',
+                            justifyContent: 'flex-end',
+                            alignItems: 'center',
+                            width: '50%'
+                        }}>
+                            <IconButton
+                                icon="comment-plus"
+                                iconColor="#f20eff"
+                                mode="contained"
+                                size={20}
+                                onPress={() => showModal(post)}
+                                style={{ marginLeft: 0 }}
+                            />
+                            <Text>{comentarios.length} Comentários</Text>
+
+                        </View>
                     </View>
                 </Card.Content>
-            </Card>
+            </Card >
         );
     };
 
@@ -111,7 +126,7 @@ const Feed = () => {
                         p.comentarios.push({
                             id: p.comentarios.length + 1,
                             texto: comentario,
-                            userId: 2
+                            userId: usuarioLogado.id
                         });
                     }
                     return p;
@@ -203,17 +218,16 @@ const styles = StyleSheet.create({
         marginBottom: 10,
     },
     textContainer: {
-        flexDirection: 'row',  // Alinha os itens na horizontal
-        justifyContent: 'space-between',  // Espaça os textos
-        alignItems: 'center',  // Alinha verticalmente no centro
-        width: '100%',
+        flexDirection: 'row',
+        justifyContent: 'flex-start',
+        alignItems: 'center',
     },
     userName: {
         fontWeight: 'bold',
     },
     postText: {
         textAlign: 'right',
-        flex: 1,  // Faz com que o texto ocupe o espaço restante
+        flex: 1,
     },
     containerStyle: {
         backgroundColor: 'white',

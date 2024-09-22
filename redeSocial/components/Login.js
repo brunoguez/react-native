@@ -49,7 +49,7 @@ const Login = ({ navigation }) => {
           }}>
             Entrar
           </Button>
-          <Button icon="plus" mode="text" onPress={() => navigation.navigate('Perfil')}>
+          <Button icon="plus" mode="text" onPress={() => navigation.navigate('Perfil', { action: "create" })}>
             Criar conta
           </Button>
         </Card.Content>

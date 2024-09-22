@@ -3,17 +3,19 @@ import { SafeAreaView, StyleSheet } from 'react-native';
 import { Card, Avatar, TextInput, RadioButton, Button, Snackbar } from 'react-native-paper';
 import { Read, Write } from '../src/file';
 import { AppContext } from './AppProvider';
+import { useRoute } from '@react-navigation/native';
 
-
-const Perfil = ({ navigation, tipo }) => {
-    const [tipoOperacao] = React.useState(tipo);
-    const [nome, setNome] = React.useState("");
-    const [email, setEmail] = React.useState("");
-    const [sexo, setSexo] = React.useState("o");
-    const [exibeSenha, setExibeSenha] = React.useState(true);
-    const [senha, setSenha] = React.useState("");
-    const [snackVisible, setSnackVisible] = React.useState(false);
+const Perfil = ({ navigateTo }) => {
+    const route = useRoute();
+    const params = route.params;
+    const isCreate = params?.action == "create"
     const { usuarioLogado, setUsuarioLogado } = React.useContext(AppContext)
+    const [nome, setNome] = React.useState(isCreate ? "" : usuarioLogado?.nome ?? "");
+    const [email, setEmail] = React.useState(isCreate ? "" : usuarioLogado?.email ?? "");
+    const [sexo, setSexo] = React.useState(isCreate ? "o" : usuarioLogado?.sexo ?? "o");
+    const [senha, setSenha] = React.useState(isCreate ? "" : usuarioLogado?.senha ?? "");
+    const [exibeSenha, setExibeSenha] = React.useState(true);
+    const [snackVisible, setSnackVisible] = React.useState(false);
 
     const onToggleSnackBar = () => setSnackVisible(!snackVisible);
     const onDismissSnackBar = () => setSnackVisible(false);
@@ -50,42 +52,51 @@ const Perfil = ({ navigation, tipo }) => {
                         <RadioButton.Item label="Feminino" value="f" />
                         <RadioButton.Item label="Outro" value="o" />
                     </RadioButton.Group>
-                    <Button icon="plus" mode="contained" onPress={async () => {
+                    <Button icon={`account-${isCreate ? "plus" : "edit"}`} mode="contained" onPress={async () => {
+
                         if (!nome || !email || !senha) {
                             if (!snackVisible)
                                 onToggleSnackBar()
                             return;
                         }
                         const data = await Read();
-                        if (tipoOperacao == "criar") {
-                            data.users.push({
+                        if (isCreate) {
+                            console.log("create")
+                            const novo = {
                                 id: Math.max(...data.users.map(a => a.id)) + 1,
                                 email,
                                 nome,
                                 sexo,
                                 senha,
                                 avatar: '../src/assets/avatar/003-cat.png'
-                            })
-
+                            }
+                            data.users.push(novo)
                             await Write(data)
-                            navigation.replace('Principal');
+                            setUsuarioLogado(novo)
+
+                            navigateTo("feed");
                             return
                         }
 
+                        console.log("update")
+
                         const users = data.users.map(u => {
                             if (u.id == usuarioLogado.id) {
-                                return { ...u, email, senha, sexo, nome }
+                                const usuario = { ...u, email, senha, sexo, nome }
+                                setUsuarioLogado(usuario)
+                                return usuario;
                             }
                             return { ...u }
                         })
                         data.users = users;
                         await Write(data)
-                        
-                        console.log(await Read())
-                        
-                        navigation.replace('Principal');
+
+                        //console.log(JSON.stringify(await Read(), null, 4))
+                        //console.log(JSON.stringify({ users, usuarioLogado }, null, 4))
+
+                        navigateTo("feed");
                     }}>
-                        Criar
+                        {isCreate ? "Criar" : "Alterar"}
                     </Button>
                 </Card.Content>
             </Card>
