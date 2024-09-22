@@ -21,14 +21,12 @@ const Navigation = () => {
 
     const FeedRoute = () => <Feed />;
     const PostRoute = () => <Postar navigate={navigateTo} />;
-    const ConfiguracaoRoute = () => <Perfil navigateTo={navigateTo} />;
-    const NotificationsRoute = () => <Text>Notificações</Text>;
+    const ConfiguracaoRoute = () => <Perfil navigate={navigateTo} />;
 
     const renderScene = BottomNavigation.SceneMap({
         feed: FeedRoute,
         post: PostRoute,
         config: ConfiguracaoRoute,
-        notifications: NotificationsRoute,
     });
 
     return (

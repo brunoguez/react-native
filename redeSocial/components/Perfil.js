@@ -4,8 +4,10 @@ import { Card, Avatar, TextInput, RadioButton, Button, Snackbar } from 'react-na
 import { Read, Write } from '../src/file';
 import { AppContext } from './AppProvider';
 import { useRoute } from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 
-const Perfil = ({ navigateTo }) => {
+const Perfil = ({ navigate }) => {
+    const navigation = useNavigation();
     const route = useRoute();
     const params = route.params;
     const isCreate = params?.action == "create"
@@ -61,7 +63,6 @@ const Perfil = ({ navigateTo }) => {
                         }
                         const data = await Read();
                         if (isCreate) {
-                            console.log("create")
                             const novo = {
                                 id: Math.max(...data.users.map(a => a.id)) + 1,
                                 email,
@@ -73,12 +74,12 @@ const Perfil = ({ navigateTo }) => {
                             data.users.push(novo)
                             await Write(data)
                             setUsuarioLogado(novo)
-
-                            navigateTo("feed");
-                            return
+                            if (!navigate) {
+                                return navigation.navigate("Principal");
+                            }
+                            navigate('feed');
+                            return;
                         }
-
-                        console.log("update")
 
                         const users = data.users.map(u => {
                             if (u.id == usuarioLogado.id) {
@@ -91,10 +92,10 @@ const Perfil = ({ navigateTo }) => {
                         data.users = users;
                         await Write(data)
 
-                        //console.log(JSON.stringify(await Read(), null, 4))
-                        //console.log(JSON.stringify({ users, usuarioLogado }, null, 4))
-
-                        navigateTo("feed");
+                        if (!navigate) {
+                            return navigation.navigate("Principal");
+                        }
+                        navigate('feed');
                     }}>
                         {isCreate ? "Criar" : "Alterar"}
                     </Button>

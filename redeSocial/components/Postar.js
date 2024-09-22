@@ -22,17 +22,15 @@ const Postar = ({ navigate }) => {
     const [previewVisible, setPreviewVisible] = React.useState(false);
     const { usuarioLogado } = React.useContext(AppContext);
     const [snackVisible, setSnackVisible] = React.useState(false);
+    const [snackbarText, setSnackbarText] = React.useState("");
 
-    const onToggleSnackBar = () => setVisible(!visible);
+    const onToggleSnackBar = () => setSnackVisible(!snackVisible);
 
-    const onDismissSnackBar = () => setVisible(false);
+    const onDismissSnackBar = () => setSnackVisible(false);
 
     return (
         <PaperProvider>
             <SafeAreaView style={[styles.container, styles.bc]}>
-                <Portal>
-
-                </Portal>
                 <Card style={styles.card}>
                     <Card.Content style={{
                         alignItems: 'center',
@@ -42,6 +40,7 @@ const Postar = ({ navigate }) => {
                             <Image
                                 style={styles.image}
                                 source={{ uri: post?.imagemURL || IMAGEM_PADRAO }}
+                                onError={a => console.log(a)}
                             />
                         }
                         <TextInput
@@ -61,8 +60,11 @@ const Postar = ({ navigate }) => {
                             style={[styles.mb(20), styles.input]}
                         />
                         <Button icon="image-plus" mode="contained" onPress={async () => {
-
-
+                            if (!post || !post?.texto || !post?.imagemURL || post?.imagemURL == IMAGEM_PADRAO) {
+                                setSnackbarText("Faltando informações para postar");
+                                onToggleSnackBar();
+                                return;
+                            }
                             const jsonData = await Read();
                             console.log(JSON.stringify({ post, jsonData }, null, 2))
                             jsonData.posts.push({
@@ -84,11 +86,9 @@ const Postar = ({ navigate }) => {
                     onDismiss={onDismissSnackBar}
                     action={{
                         label: 'Undo',
-                        onPress: () => {
-                            // Do something
-                        },
+                        onPress: onDismissSnackBar,
                     }}>
-                    Testeee
+                    {snackbarText}
                 </Snackbar>
             </SafeAreaView>
         </PaperProvider>
