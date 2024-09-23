@@ -9,7 +9,6 @@ const Navigation = () => {
     const [routes] = React.useState([
         { key: 'feed', title: 'Feed', focusedIcon: 'image-text', unfocusedIcon: 'image-area' },
         { key: 'post', title: 'Postar', focusedIcon: 'plus-circle', unfocusedIcon: 'plus-circle-outline' },
-        { key: 'notifications', title: 'Notificações', focusedIcon: 'bell', unfocusedIcon: 'bell-outline' },
         { key: 'config', title: 'Configurações', focusedIcon: 'cog', unfocusedIcon: 'cog-outline' },
     ]);
 
