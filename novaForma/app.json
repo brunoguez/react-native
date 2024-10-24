@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "novaForma",
-    "slug": "novaForma",
+    "name": "reactnative-masterclass",
+    "slug": "reactnative-masterclass",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/images/icon.png",
